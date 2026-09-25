@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Darshan International &middot; Website Creatives Proposal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+/* Tempest tokens per proposal-system.md §2, corrected 2026-09-21. */
+:root{
+  --red:#BD272B; --blue:#24395C; --ink:#0F0F0F; --body:#383838; --mute:#5A6B82;
+  --line:#DCE2EB; --surface:#F5F7FB; --warm:#F5F7FB; --dark:#0F0F0F;
+  --ochre:#D08A45; --good:#2C7A5A; --bad:#9B3B2E;
+}
+html,body{height:100%;background:#0e0f12;overflow:hidden;font-family:'Poppins',system-ui,-apple-system,sans-serif;-webkit-font-smoothing:antialiased}
+#stage{position:absolute;top:50%;left:50%;width:1280px;height:720px;transform-origin:center;background:#fff;box-shadow:0 40px 120px rgba(0,0,0,.55)}
+.slide{position:absolute;inset:0;background:#fff;color:var(--ink);opacity:0;visibility:hidden;transform:translateY(16px);transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1),visibility 0s .4s}
+.slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .4s cubic-bezier(.22,1,.36,1),transform .4s cubic-bezier(.22,1,.36,1)}
+
+/* WPR furniture: mark top-left, numbered red kicker, page N / TOTAL bottom-right.
+   Every kicker on one baseline. Never vertically centre a content slide. */
+.inner{position:absolute;inset:0;padding:96px 68px 56px}
+.slogo{position:absolute;top:34px;left:68px;height:30px;z-index:3}
+.clogo{position:absolute;top:32px;right:68px;height:34px;z-index:3;opacity:.92}
+.pageno{position:absolute;bottom:26px;right:68px;font-size:11px;letter-spacing:.14em;color:var(--mute);font-weight:500}
+.pageno b{color:var(--mute);font-weight:500}
+
+.kicker{font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--red);margin-bottom:16px}
+h1{font-size:60px;font-weight:800;letter-spacing:-.032em;line-height:1.05}
+h1 em,h2 em,.pq em,.closeline em{font-style:normal;color:var(--red)}
+h2{font-size:37px;font-weight:800;letter-spacing:-.028em;line-height:1.16;max-width:1120px}
+h2.two{font-size:34px}
+.lede{margin-top:16px;font-size:16px;line-height:1.66;color:var(--body);max-width:1000px;font-weight:400}
+.lede strong{color:var(--ink);font-weight:600}
+
+/* red left-rule pull-quote, closes most content slides */
+.pq{position:absolute;left:68px;right:68px;bottom:58px;border-left:3px solid var(--red);padding-left:18px;font-size:16px;font-weight:700;line-height:1.5;letter-spacing:-.015em}
+.pq.b{border-left-color:var(--blue)}
+.cap{font-size:12px;color:var(--mute);font-weight:500;margin-top:10px}
+
+/* split: left copy, right evidence */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-top:22px;align-items:start}
+.split.wide{grid-template-columns:1.15fr 1fr}
+.split.ev{grid-template-columns:1fr 1.1fr}
+.shot{border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--warm);
+  height:352px;display:flex;align-items:center;justify-content:center;padding:0;background:#f7f1e8}
+.shot img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block}
+.shot.amz{height:auto;background:#fff;padding:0;align-items:stretch}
+.shot.amz img{width:100%;height:auto;max-height:none;object-fit:contain}
+
+/* labelled fact rows with a coloured rule above, WPR 03 */
+.facts{margin-top:18px}
+.fact{padding:11px 0 10px;border-top:2px solid var(--red)}
+.fact:nth-child(2){border-top-color:var(--blue)}
+.fact:nth-child(3){border-top-color:var(--red)}
+.fact:nth-child(4){border-top-color:var(--blue)}
+.fact h4{font-size:15px;font-weight:700;letter-spacing:-.015em;margin-bottom:5px}
+.fact p{font-size:13px;line-height:1.5;color:var(--body)}
+
+/* metric tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.tile{border:1px solid var(--line);border-radius:14px;padding:16px 20px 18px;position:relative;display:flex;flex-direction:column}
+.tile .ic{height:88px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.tile .ic img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block}
+.tile::before{content:'';position:absolute;top:-1px;left:24px;width:34px;height:3px;background:var(--line);border-radius:0 0 3px 3px}
+.tile.hot::before{background:var(--red)}
+.tile .v{font-size:31px;font-weight:800;letter-spacing:-.035em;line-height:1;color:var(--mute)}
+.tile.hot .v{color:var(--red)}
+.tile .k{margin-top:9px;font-size:13.5px;font-weight:700}
+.tile .s{margin-top:4px;font-size:12px;color:var(--body);font-weight:400}
+
+/* card grid, each with a generated render on a warm panel */
+.cards{display:grid;gap:18px;margin-top:26px}
+.cards.c2{grid-template-columns:repeat(2,1fr)}
+.cards.c3{grid-template-columns:repeat(3,1fr)}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.cd{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.cd .rend{background:#f7f1e8;display:flex;align-items:center;justify-content:center;padding:0}
+/* renders are 1:1; the box is square so contain never letterboxes or crops */
+.cd .rend{height:196px}
+.cd .rend img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block}
+.cd .bd{padding:18px 20px 20px}
+.cd .cl{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:8px}
+.cd .cl.b{color:var(--blue)}
+.cd h3{font-size:16.5px;font-weight:700;letter-spacing:-.018em;line-height:1.28;margin-bottom:7px}
+.cd p{font-size:13px;line-height:1.55;color:var(--body)}
+
+/* persona card: real photography over the copy */
+.pcard{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
+.pcard .ph{width:100%;aspect-ratio:16/7;overflow:hidden;background:var(--surface)}
+.pcard .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard .bd{padding:16px 20px 18px}
+.pcard .cl{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:9px}
+.pcard .cl.b{color:var(--blue)}
+.pcard h3{font-size:17px;font-weight:700;letter-spacing:-.02em;line-height:1.24;margin-bottom:9px}
+.pcard ul{list-style:none}
+.pcard li{font-size:12.5px;line-height:1.45;color:var(--body);padding:3px 0 3px 16px;position:relative}
+.pcard li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.pcard.b li::before{background:var(--blue)}
+.pcard li strong{color:var(--ink);font-weight:600}
+
+/* a full-width line-art band, sized to the art's own ratio so it never crops */
+.band{margin-top:20px}
+.band img{width:100%;height:auto;display:block}
+
+/* icon sitting above a table column head or a panel */
+.iconrow{display:grid;gap:18px;margin-top:20px}
+.iconrow .ii{height:74px;display:flex;align-items:center;justify-content:center}
+.iconrow .ii img{height:100%;width:auto;max-width:100%;object-fit:contain;display:block}
+
+/* plain panel card, no render */
+.pnl{border:1px solid var(--line);border-radius:16px;padding:24px 26px}
+.pnl.warm{background:var(--surface)}
+.pnl .cl{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:12px}
+.pnl .cl.b{color:var(--blue)}
+.pnl h3{font-size:19px;font-weight:700;letter-spacing:-.02em;line-height:1.24;margin-bottom:12px}
+.pnl .mi{height:56px;display:flex;align-items:center;justify-content:flex-start;margin-bottom:12px}
+.pnl .mi img{height:100%;width:auto;object-fit:contain;display:block}
+.pnl ul{list-style:none}
+.pnl li{font-size:13.5px;line-height:1.5;color:var(--body);padding:5px 0 5px 16px;position:relative}
+.pnl li::before{content:'';position:absolute;left:0;top:12px;width:5px;height:5px;border-radius:50%;background:var(--red)}
+.pnl.b li::before{background:var(--blue)}
+.pnl li strong{color:var(--ink);font-weight:600}
+
+/* numbered read columns, WPR 14 */
+.reads{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:30px}
+.rd{border-top:2px solid var(--red);padding-top:14px}
+.rd:nth-child(2){border-top-color:var(--blue)}
+.rd .n{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);margin-bottom:9px}
+.rd p{font-size:14.5px;font-weight:700;line-height:1.42;letter-spacing:-.015em}
+
+/* borderless table */
+table{width:100%;border-collapse:collapse;margin-top:22px}
+thead th{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--mute);text-align:left;padding:0 14px 11px 0;border-bottom:1px solid var(--line)}
+tbody td{font-size:13.5px;line-height:1.5;color:var(--body);padding:13px 14px 13px 0;border-bottom:1px solid var(--line);vertical-align:top}
+tbody td:first-child{color:var(--ink);font-weight:700}
+table.t2 tbody td{padding:9.5px 14px 9.5px 0;font-size:13px}
+table.t3 tbody td{padding:7px 12px 7px 0;font-size:12.5px}
+table.t3 thead th{font-size:9.5px;padding-bottom:8px}
+td.dot{width:44px;color:var(--red);font-size:14px;font-weight:700}
+/* row label with its own icon, sized to the icon's real ratio so it never distorts */
+td.ric{display:flex;align-items:center;gap:12px}
+td.ric img{max-height:30px;max-width:34px;width:auto;height:auto;object-fit:contain;flex-shrink:0;display:block;margin:0 auto}
+td.ric .ib{width:34px;height:32px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+td.lbl{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);width:150px;padding-top:15px}
+td.pl{color:var(--body);font-weight:400}
+
+/* segmented strip, last cell solid as destination */
+.strip{display:flex;margin-top:26px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sg{flex:1;padding:16px 18px;border-right:1px solid var(--line)}
+.sg:last-child{border-right:none;background:var(--red)}
+.sg .sn{font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:7px}
+.sg:last-child .sn{color:rgba(255,255,255,.72)}
+.sg .sw{font-size:14.5px;font-weight:700;letter-spacing:-.018em;line-height:1.25}
+.sg:last-child .sw{color:#fff}
+
+/* full-width generated diagram */
+.diagram{margin-top:22px;border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px 20px}
+.diagram img{width:100%;display:block}
+
+/* cover */
+.cover .inner{display:flex;flex-direction:column;justify-content:center;padding:58px 68px 150px}
+/* Standing rule: on a proposal cover BOTH marks are large and equally weighted,
+   contractor left, client right, sharing one baseline. Never the small furniture size. */
+.covlogos{position:absolute;top:56px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:center;z-index:4}
+.covlogos .cl-l{height:62px;display:block}
+.covlogos .cl-r{height:72px;display:block}
+.cover .bracket{position:relative;padding-left:32px}
+.cover .bracket::before{content:'';position:absolute;left:0;top:-4px;width:38px;height:38px;border-left:4px solid var(--blue);border-top:4px solid var(--blue)}
+.cover .bracket::after{content:'';position:absolute;left:0;bottom:-4px;width:38px;height:38px;border-left:4px solid var(--blue);border-bottom:4px solid var(--blue)}
+.cover .sub{margin-top:30px;font-size:17px;color:var(--body);max-width:900px;line-height:1.6}
+.covfoot{position:absolute;bottom:44px;left:68px;right:68px;display:flex;justify-content:space-between;align-items:flex-end;font-size:13px;color:var(--body)}
+.covfoot strong{color:var(--ink);font-weight:700}
+.covfoot .r{text-align:right;font-size:11.5px;color:var(--mute);line-height:1.7}
+
+/* dark slides */
+.slide.dk{background:var(--dark);color:#fff}
+.slide.dk .kicker{color:var(--red)}
+.slide.dk h2{color:#fff}
+.darkcard{background:var(--dark);border-radius:18px;padding:40px 48px;margin-top:26px}
+.darkcard .cl{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--red);margin-bottom:22px}
+.darkcard ul{list-style:none;columns:2;column-gap:44px}
+.darkcard li{font-size:16.5px;font-weight:600;color:#fff;padding:9px 0 9px 22px;position:relative;break-inside:avoid}
+.darkcard li::before{content:'';position:absolute;left:0;top:18px;width:7px;height:7px;border-radius:50%;background:var(--red)}
+.closewrap{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px}
+.logocard{background:#fff;border-radius:12px;padding:12px 20px}
+.logocard img{height:28px;display:block}
+.closeline{font-size:44px;font-weight:800;letter-spacing:-.03em;line-height:1.16;color:#fff}
+.closefoot{font-size:13.5px;color:#9a9ea6}
+.closefoot b{color:var(--red);font-weight:700}
+
+
+/* ---- pptx-format components (Swapnil's deliverable/qty/remarks layout) ---- */
+.sub{margin-top:14px;font-size:16px;line-height:1.6;color:var(--body);max-width:1060px}
+.sub strong{color:var(--ink);font-weight:600}
+.notebar{position:absolute;left:68px;right:68px;bottom:56px;font-size:12.5px;line-height:1.55;
+  color:var(--body);border-left:3px solid var(--blue);padding-left:16px}
+.notebar b{color:var(--ink);font-weight:700}
+
+/* deliverable table: 3 columns, hairline rules, qty column in navy */
+table.dl{width:100%;border-collapse:collapse;margin-top:22px}
+table.dl thead th{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mute);text-align:left;padding:0 16px 11px 0;border-bottom:1px solid var(--line)}
+table.dl tbody td{font-size:13.5px;line-height:1.5;color:var(--body);padding:11px 16px 11px 0;
+  border-bottom:1px solid var(--line);vertical-align:top}
+table.dl tbody td:first-child{color:var(--ink);font-weight:700;width:27%}
+table.dl tbody td.qty{color:var(--blue);font-weight:700;width:19%;white-space:nowrap}
+table.dl tbody td.qty.hot{color:var(--red)}
+table.dl.tight tbody td{padding:8.5px 16px 8.5px 0;font-size:13px}
+table.dl.xt tbody td{padding:6px 16px 6px 0;font-size:12.5px;line-height:1.45}
+table.dl.xt thead th{padding-bottom:9px}
+.slide.packed h2{font-size:33px}
+.slide.packed .sub{margin-top:11px;font-size:15px}
+
+/* scope boundary: two columns, red ticks vs grey crosses */
+.bounds{display:grid;grid-template-columns:1fr 1fr;gap:34px;margin-top:26px}
+.bx h3{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;padding-bottom:11px;border-bottom:2px solid var(--red)}
+.bx.out h3{color:var(--mute);border-bottom-color:var(--line)}
+.bx ul{list-style:none}
+.bx li{font-size:13.5px;line-height:1.5;color:var(--body);padding:7px 0 7px 26px;position:relative}
+.bx li::before{content:'';position:absolute;left:2px;top:12px;width:9px;height:5px;
+  border-left:2px solid var(--red);border-bottom:2px solid var(--red);transform:rotate(-45deg)}
+.bx.out li::before{content:'';left:3px;top:13px;width:9px;height:9px;border:none;
+  background:linear-gradient(currentColor,currentColor),linear-gradient(currentColor,currentColor);
+  background-size:9px 2px,2px 9px;background-position:center,center;background-repeat:no-repeat;
+  color:#c9ccd2;transform:rotate(45deg)}
+.bx li strong{color:var(--ink);font-weight:600}
+
+/* nav in the side gutters */
+#bar{position:absolute;top:0;left:0;height:3px;background:var(--red);width:0;transition:width .4s cubic-bezier(.22,1,.36,1);z-index:5}
+#nav button{position:fixed;top:50%;transform:translateY(-50%);width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10;transition:background .15s ease,opacity .2s ease}
+#nav button:hover{background:var(--red);border-color:var(--red)}
+#nav button:focus-visible{outline:2px solid var(--red);outline-offset:3px}
+#prev{left:26px}#next{right:26px}
+#nav.hide button{opacity:0;pointer-events:none}
+@media (max-width:900px){#prev{left:8px}#next{right:8px}}
+
+/* pricing-breakdown slide: more rows than the original 3-slide layout assumed */
+table.dl.xs tbody td{padding:4.5px 16px 4.5px 0;font-size:11.8px;line-height:1.38}
+table.dl.xs thead th{padding-bottom:7px}
+.slide.pricing h2{font-size:29px;margin-bottom:2px}
+.slide.pricing .notebar{bottom:34px;font-size:11.5px}
+
+/* divider row separating the timeline block from the cost block */
+table.dl tbody tr.sect td{padding-top:15px;padding-bottom:6px;border-bottom:none;
+  font-size:9.5px;font-weight:700;letter-spacing:.17em;text-transform:uppercase;color:var(--red)}
+table.dl tbody tr.sect+tr td{border-top:1px solid var(--line)}
+
+/* v2: in scope / out of scope / terms, three columns, TEMPEST-COLORS accents */
+.bounds.c3{grid-template-columns:1fr 1fr 1fr;gap:30px;margin-top:22px}
+.bounds.c3 .bx li{font-size:12.6px;line-height:1.45;padding:5px 0 5px 24px}
+.bx h3{color:var(--good);border-bottom-color:var(--good)}
+.bx li::before{border-color:var(--good)}
+.bx.out h3{color:var(--bad);border-bottom-color:var(--bad)}
+.bx.out li::before{color:var(--bad);opacity:.75}
+.bx.terms h3{color:var(--blue);border-bottom-color:var(--blue)}
+.bx.terms li::before{content:'';left:4px;top:12px;width:6px;height:6px;border:none;border-radius:50%;
+  background:var(--blue);transform:none}
+.notebar{border-left-color:var(--ochre)}
+.slide.packed .notebar{bottom:30px;font-size:11.5px}
+table.dl tbody td:first-child{width:23%}
+table.dl tbody td.qty{width:16%}
+</style>
+</head>
+<body>
+<div id="stage">
+<div id="bar"></div>
+
+<!-- 01 scope of deliverables -->
+<section class="slide packed on">
+  <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
+  <div class="inner">
+    <div class="kicker">Website Creatives &middot; Scope of Deliverables</div>
+    <h2>Five product page images for each of the 146 SKUs.</h2>
+    <table class="dl xs">
+      <thead><tr><th>Deliverable</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Creative direction</td><td class="qty">1 style frame</td><td>Backgrounds, type, colour and fragrance cues for the storefront, approved before production</td></tr>
+        <tr><td>Pilot SKUs</td><td class="qty">3 SKUs</td><td>Full 5 image set on three SKUs to lock the look before batch production</td></tr>
+        <tr><td>Hero image</td><td class="qty">1 per SKU</td><td>Pack on a clean background, sized for Shopify zoom</td></tr>
+        <tr><td>Pack &amp; quantity image</td><td class="qty">1 per SKU</td><td>Stick count, weight and pack size shown clearly</td></tr>
+        <tr><td>Fragrance &amp; ingredients image</td><td class="qty">1 per SKU</td><td>Fragrance notes, ingredients and burn time from Client approved facts</td></tr>
+        <tr><td>Usage image</td><td class="qty">1 per SKU</td><td>How to light and use, with occasion cues</td></tr>
+        <tr><td>Lifestyle image</td><td class="qty">1 per SKU</td><td>Pack placed in a home, puja or ambience scene</td></tr>
+        <tr><td>Mobile exports</td><td class="qty">Per image</td><td>Square and portrait crops for mobile product pages</td></tr>
+        <tr><td>Batch delivery</td><td class="qty">25 to 30 SKUs</td><td>Delivered in batches matched to the website's SKU onboarding</td></tr>
+        <tr><td>Revisions</td><td class="qty">2 rounds per batch</td><td>Consolidated feedback per batch</td></tr>
+        <tr><td>File handover</td><td class="qty">Source + web files</td><td>Named by SKU, compressed for fast loading, source files included</td></tr>
+        <tr><td>Home &amp; collection banners</td><td class="qty hot">Per piece</td><td>Hero and campaign banners for home and brand pages, quoted on request</td></tr>
+        <tr><td>New photography</td><td class="qty hot">Quoted separately</td><td>Needed only where usable pack photos or artwork files do not exist</td></tr>
+      </tbody>
+    </table>
+    <div class="notebar"><b>A separate project from the website build,</b> so graphics are priced per SKU and can start while the store is still being built.</div>
+  </div>
+  <div class="pageno">01 / 03</div>
+</section>
+
+<!-- 02 scope boundaries + terms -->
+<section class="slide">
+  <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
+  <div class="inner">
+    <div class="kicker">Website Creatives &middot; Scope Boundaries &amp; Terms</div>
+    <h2>What the graphics cover, what sits outside them, and the terms.</h2>
+    <div class="bounds c3">
+      <div class="bx">
+        <h3>In scope</h3>
+        <ul>
+          <li>Style frame and a 3 SKU pilot</li>
+          <li><strong>5 images per SKU</strong> for 146 SKUs</li>
+          <li>Mobile crops of every image</li>
+          <li>Batch delivery in step with SKU onboarding</li>
+          <li>Two revision rounds per batch</li>
+          <li>Source and web ready files, named by SKU</li>
+        </ul>
+      </div>
+      <div class="bx out">
+        <h3>Out of scope</h3>
+        <ul>
+          <li>Photography, studio and location shoots</li>
+          <li>Packaging or label redesign</li>
+          <li>Video and animation</li>
+          <li>Marketplace listing images: Listings proposal</li>
+          <li>Ad creatives: Performance Ads proposal</li>
+          <li>Banners, unless ordered per piece</li>
+        </ul>
+      </div>
+      <div class="bx terms">
+        <h3>Commercial terms</h3>
+        <ul>
+          <li>Priced per SKU; more SKUs at the same rate</li>
+          <li>Client supplies pack photos or artwork files</li>
+          <li>Product facts on images come from Client approved data</li>
+          <li>Changes after batch sign off charged per image</li>
+          <li><strong>50% at kick off</strong>, balance per delivered batch</li>
+          <li>Fees exclude GST</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="pageno">02 / 03</div>
+</section>
+
+<!-- 03 timeline + investment -->
+<section class="slide pricing">
+  <img class="slogo" src="assets/tempest.png" alt="Tempest">
+  <img class="clogo" src="assets/darshan.png" alt="Darshan Incense">
+  <div class="inner">
+    <div class="kicker">Website Creatives &middot; Timeline &amp; Investment</div>
+    <h2>Eight weeks, finished before the store's SKU onboarding ends.</h2>
+    <table class="dl xs">
+      <thead><tr><th>Workstream</th><th>Qty / Spec</th><th>Remarks</th></tr></thead>
+      <tbody>
+        <tr><td>Brief &amp; style frame</td><td class="qty">Weeks 3&ndash;4</td><td>Direction set after the website's design templates are approved</td></tr>
+        <tr><td>Pilot SKUs</td><td class="qty">Weeks 4&ndash;5</td><td>Three SKUs produced and signed off</td></tr>
+        <tr><td>Batches 1&ndash;2</td><td class="qty">Weeks 5&ndash;7</td><td>Around 60 SKUs, delivered for onboarding</td></tr>
+        <tr><td>Batches 3&ndash;5</td><td class="qty">Weeks 7&ndash;10</td><td>Remaining SKUs, delivered for onboarding</td></tr>
+        <tr><td>Final QA &amp; handover</td><td class="qty">Weeks 10&ndash;11</td><td>Every image checked against its live product page</td></tr>
+        <tr class="sect"><td colspan="3">Investment breakdown</td></tr>
+        <tr><td>Hero image</td><td class="qty">&#8377;1,180 / SKU</td><td>One per SKU</td></tr>
+        <tr><td>Pack &amp; quantity image</td><td class="qty">&#8377;1,180 / SKU</td><td>One per SKU</td></tr>
+        <tr><td>Fragrance &amp; ingredients image</td><td class="qty">&#8377;1,180 / SKU</td><td>One per SKU</td></tr>
+        <tr><td>Usage image</td><td class="qty">&#8377;1,180 / SKU</td><td>One per SKU</td></tr>
+        <tr><td>Lifestyle image</td><td class="qty">&#8377;1,180 / SKU</td><td>One per SKU</td></tr>
+        <tr><td><strong>Rate per SKU</strong></td><td class="qty hot">&#8377;5,900</td><td>All five images, mobile crops and source files</td></tr>
+        <tr><td>Banners &amp; photography</td><td class="qty">On request</td><td>Quoted before any work starts</td></tr>
+      </tbody>
+    </table>
+    <div class="notebar"><b>Payment: 50% at kick off, balance per delivered batch.</b> Fees exclude GST.</div>
+  </div>
+  <div class="pageno">03 / 03</div>
+</section>
+<div id="nav"><button id="prev" aria-label="Previous slide">&#8249;</button><button id="next" aria-label="Next slide">&#8250;</button></div>
+</div>
+<script>
+const slides=[...document.querySelectorAll('.slide')],bar=document.getElementById('bar'),
+      stage=document.getElementById('stage'),nav=document.getElementById('nav');
+let cur=Math.min(Math.max(parseInt(location.hash.slice(1))||0,0),slides.length-1);
+function show(i){
+  cur=Math.min(Math.max(i,0),slides.length-1);
+  slides.forEach((s,j)=>s.classList.toggle('on',j===cur));
+  bar.style.width=(cur/(slides.length-1)*100)+'%';
+  nav.classList.toggle('hide',cur===0);
+  try{history.replaceState(null,'','#'+cur);}catch(e){}
+}
+function fit(){const s=Math.min(innerWidth/1280,innerHeight/720);stage.style.transform=`translate(-50%,-50%) scale(${s})`;}
+addEventListener('resize',fit);
+addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();show(cur+1);}
+  else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();show(cur-1);}
+  else if(e.key==='Home')show(0);
+  else if(e.key==='End')show(slides.length-1);
+  else if(e.key==='f'||e.key==='F')document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen();
+});
+document.getElementById('prev').onclick=e=>{e.stopPropagation();show(cur-1);};
+document.getElementById('next').onclick=e=>{e.stopPropagation();show(cur+1);};
+stage.addEventListener('click',e=>{if(!e.target.closest('a,button'))show(cur+1);});
+fit();show(cur);
+</script>
+</body>
+</html>
